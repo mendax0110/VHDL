@@ -1,0 +1,51 @@
+-----------------------------------------
+--------------shift register-------------
+-----------------------------------------
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
+--entity declaration--
+entity shift_register is
+end entity shift_register;
+
+--architecture declaration--
+architecture shift_register_arch of shift_register is
+
+    component shift_register
+            port(   --Outputs--
+                    A       : out std_logic;
+                    B       : out std_logic;
+                    C       : out std_logic;
+                    D       : out std_logic;
+                    --Inputs--
+                    data_in : in std_logic;
+                    clk     : in std_logic;
+                    reset   : in std_logic);
+    end component;
+
+    signal  data_in     : std_logic := '0';
+    signal  reset       : std_logic := '0';
+    signal  clk         : std_logic := '0';
+    signal  A, B, C, D  : std_logic;
+
+    begin
+        
+        dev_to_test : Shift_register
+                port map(A, B, C, D, data_in, clk, reset);
+        
+        clock_stimulus : process
+        begin
+                wait for 10 ns;
+                clk <= not clk;
+        end process;
+
+        data_in_stimulus : process
+        begin
+                wait for 40 ns;
+                data_in <= not data_in;
+                wait for 150 ns;
+        end process;
+
+end architecture shift_register_arch;
+
