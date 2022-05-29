@@ -2,7 +2,7 @@
 -------------------IR IN VHDL-------------------
 ------------------------------------------------
 library IEEE;
-use IEEE.std_logic_1164.all;
+use IEEE.STD_LOGIC_1164.ALL;
 
 --entity declarations--
 entity IR is
@@ -11,11 +11,11 @@ entity IR is
             reset   : in std_logic;
             load    : in std_logic;
             INPUT   : in std_logic_vector(15 downto 0);
-            --Output--
+            --Outputs--
             OUTPUT  : out std_logic_vector(15 downto 0));
 end entity IR;
 
---architecure definitions--
+--architecture definitions--
 architecture IR_arch of IR is
 
     begin
