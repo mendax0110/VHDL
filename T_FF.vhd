@@ -1,5 +1,5 @@
 -------------------------------------------------
------------T FLIP FLOP in VHDL-------------------
+---------------T-FLIP-FLOP IN VHDL---------------
 -------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;
@@ -10,11 +10,11 @@ entity TFF is
             T       : in std_logic;
             CLK     : in std_logic;
             --Outputs--
-            Q       : out std_logic;
+            Q       : out std_logic
             Qb      : out std_logic);
 end entity TFF;
 
---architecure definitions--
+--arhitecture declarations--
 architecture TFF_arch of TFF is
 
     begin
@@ -29,8 +29,8 @@ architecture TFF_arch of TFF is
                     end if;
                 end if;
         end process;
-        
-        Q  <= tmp;
-        Qb <= not tmp;
-        
+
+        Q   <= tmp;
+        Qb  <= not tmp;
+
 end architecture TFF_arch;
