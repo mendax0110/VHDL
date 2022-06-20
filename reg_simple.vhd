@@ -1,11 +1,11 @@
 -------------------------------------------------
----------simple register in vhdl-----------------
+-------------SIMPLE-REGISTER IN VHDL-------------
 -------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;
 
 --entity declaration--
-entity reg is
+entity simple_reg is
     generic(
         WIDTH : positive := 1
     );
@@ -15,10 +15,10 @@ entity reg is
             d       : in std_logic_vector(WIDTH-1 downto 0);
             --Outputs--
             q       : out std_logic_vector(WIDTH-1 downto 0));
-end entity reg;
+end entity simple_reg;
 
---architecture definitions--
-architecture reg_arch of reg is
+--architecure definitions--
+architecture simple_reg_arch of simple_reg is
 
     begin
         process(clk, rst)
@@ -30,4 +30,4 @@ architecture reg_arch of reg is
             end if;
         end process;
 
-end architecture reg_arch;
+end architecture simple_reg_arch;
