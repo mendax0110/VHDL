@@ -15,9 +15,9 @@ entity lfsr is
             clk     : in std_logic;
             reset   : in std_logic;
             en      : in std_logic;
-            seedIn  : in std_logic_vector(lfsrLen - 1) downto 0);
+            seedIn  : in std_logic_vector((lfsrLen - 1) downto 0);
             --Outputs--
-            rndOut  : out std_logic_vector(lfsrIter - 1) downto 0);
+            rndOut  : out std_logic_vector((lfsrIter - 1) downto 0));
 end entity lfsr;
 
 --architecture definition--
@@ -37,5 +37,5 @@ architecture lfsr_arch of lfsr is
             end if;
         end process;
 
-        rndOut <= sr(lfsrIter - 1) downto 0);
+        rndOut <= sr((lfsrIter - 1) downto 0);
 end architecture lfsr_arch;
