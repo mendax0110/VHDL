@@ -1,19 +1,31 @@
+---------------------------------------------------------
+---------------IRREGULAR-GEN-SHIFT IN VHDL---------------
+---------------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;
 
+--entity declarations--
 entity shift is
     generic(len : integer);
-    port(a, clk : in std_logic;
+    port(   --Inputs--
+            a   : in std_logic;
+            clk : in std_logic;
+            --Outputs--
             b   : out std_logic);
-end shift;
+end entity shift;
 
-architecture if_shift of shift is
+--architecture definitions--
+architecture if_shift_arch of if_shift is
+
     component dff
-        port(d, clk : in std_logic;
+        port(   --Inputs--
+                d   : in std_logic;
+                clk : in std_logic;
+                --Outputs--
                 q   : out std_logic);
-    end component;
+    end component dff;
 
-    signal z : std_logic_vector(1 to (len -1));
+    signal z : std_logic_vector(1 to (len-1));
         begin
             g1 : for 1 in 0 to (len -1) generate
                 if i = 0 generate
@@ -24,9 +36,9 @@ architecture if_shift of shift is
                     dffx : port map(z(i), clk, b);
                 end generate;
 
-                if ( i > 0) and i < (len -1) generate
-                    dffx : port map (z(i), clk, z(i + 1));
+                if(i > 0) and i < (len -1) generate
+                    dffx : port map(z(i), clk, z(i + 1));
                 end generate;
-        end generate;
-end if_shift;
+            end generate;
 
+end architecture if_shift_arch;
