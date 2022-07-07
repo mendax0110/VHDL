@@ -32,4 +32,4 @@ package body data_types is
         return slv;
     end function to_slv;
 
-        end package body data_types;
+end package body data_types;
