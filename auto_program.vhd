@@ -1,25 +1,35 @@
-use library IEEE;
+--------------------------------------------------------------------
+------------------------AUTO-PROGRAM IN VHDL------------------------
+--------------------------------------------------------------------
+library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity dff is
-    port(   d, clk : in std_logic;
-                 q : out std_logic);
+--entity declarations--
+entity auto_p is
+    port(   --Inputs--
+            d   : in std_logic;
+            clk : in std_logic;
+            --Outputs--
+            q   : out std_logic);
 
-    function rising_edge(signal s : std_logic)  -- line 1
+    --function declarations--
+    function rising_edge(signal s : std_logic)
         return boolean is
         begin
-            -- this function makes use of attributes
-            --'event and 'last_value discussed
-            if (s'event) and (s = '1') and
-               (s'last_value = '0') then
-                return true;
+            --this function make use of attributes--
+            --'event and 'last_value discussed--
+            if(s'event) and (s = '1') and
+                (s'last_value = '0') then
+                return 'true';
             else
-                return false;
+                return 'false';
             end if;
-    end rising_edge;
-end dff;
+        end rising_edge;
+end entity auto_p;
 
-architecture behave of dff is
+--architecuture declarations--
+architecture auto_p_arch of auto_p is
+
     begin
         process(clk)
             begin
@@ -27,4 +37,5 @@ architecture behave of dff is
                     q <= d;
                 end if;
         end process;
-end behave;
+
+end architecture auto_p_arch;
