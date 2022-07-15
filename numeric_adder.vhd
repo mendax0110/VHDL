@@ -16,7 +16,7 @@ entity adder_num is
         c_in    : in std_logic;
             --Outputs--
         sum     : out std_logic_vector(WIDTH-1 downto 0);
-        c_out   : out std_logic));
+        c_out   : out std_logic);
 end entity adder_num;
 
 --architecture definitions--
