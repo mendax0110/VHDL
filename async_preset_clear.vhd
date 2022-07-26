@@ -1,16 +1,28 @@
+------------------------------------------------------------------------
+-----------------------ASYNC-PRESET-CLEAR IN VHDL-----------------------
+------------------------------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;
 
+--entity declarations--
 entity dff_pc is
-    port( preset, clear, clock, din : in std_logic;
-          dout                      : out std_logic);
-end dff_pc;
+    port(   --Inputs--
+            preset  : in std_logic;
+            clear   : in std_logic;
+            clock   : in std_logic;
+            din     : in std_logic;
+            --Outputs--
+            dout    : out std_logic);
+end entity dff_pc;
 
-architecture synth of dff_pc is
+--architecture declarations--
+architecture dff_pc_arch of dff_pc is
+
     begin
+        --process declarations--
         process(preset, clear, clock)
             begin
-                if(preset =  '1') then
+                if(preset = '1') then
                     dout <= '1';
                 elsif(clear = '1') then
                     dout <= '0';
@@ -18,4 +30,5 @@ architecture synth of dff_pc is
                     dout <= din;
                 end if;
         end process;
-end synth;
+
+end architecture dff_pc_arch;
