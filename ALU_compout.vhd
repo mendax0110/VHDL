@@ -1,16 +1,25 @@
+-----------------------------------------------------------
+--------------------ALU-COMPOUT IN VHDL--------------------
+-----------------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_arith.all;
 use work.cpu_lib.all;
 
-entity comp is
-    port( a, b    : in bit16;
-          sel     : in t:comp;
-          compout : out std_logic);
-end comp;
+--entity declarations--
+entity alu_comp is
+    port(   --Inputs--
+            a       : in bit16;
+            b       : in bit16;
+            --Outputs--
+            compout : out std_logic);
+end entity alu_comp;
 
-architecture rtl of comp is
+--architecture declarations--
+architecture alu_comp_arch of alu_comp is
+
     begin
+        --Processing--
         compproc : process(a, b, sel)
             begin
                 case sel is
@@ -52,4 +61,6 @@ architecture rtl of comp is
                         end if;
                 end case;
         end process;
-end rtl;
+    
+end architecture alu_comp_arch;
+                            
