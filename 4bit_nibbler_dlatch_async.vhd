@@ -1,15 +1,24 @@
-library IEEEE;
+----------------------------------------------------------------
+---------------4-Bit-NIBBLER-DLATCH-ASYNC IN VHDL---------------
+----------------------------------------------------------------
+library IEEE;
 use IEEE.std_logic_1164.all;
 
+--entity declarations--
 entity risingedge_DFlipFlop_SyncReset is
-    port(   Q          : out std_logic;
-            clk        : in std_logic;
-            sync_reset : in std_logic;
-            D          : in std_logic);
-end risingedge_DFlipFlop_SyncReset;
+    port(   --Inputs--
+            D           : in std_logic;
+            clk         : in std_logic;
+            sync_reset  : in std_logic;
+            --Outputs--
+            Q           : out std_logic);
+end entity risingedge_DFlipFlop_SyncReset;
 
-architecture behavioral of risingedge_DFlipFlop_SyncReset is
+--architecture declarations--
+architecture risingedge_DFlipFlop_SyncReset_arch of risingedge_DFlipFlop_SyncReset is
+
     begin
+        --process declarations--
         process(clk)
             begin
                 if(rising_edge(clk)) then
@@ -20,4 +29,6 @@ architecture behavioral of risingedge_DFlipFlop_SyncReset is
                     end if;
                 end if;
         end process;
-end behavioral;
+    
+end architecture risingedge_DFlipFlop_SyncReset_arch;
+
