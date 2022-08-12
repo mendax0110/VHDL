@@ -1,37 +1,51 @@
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
+-----------------------------------------------------------------------
+----------------------------16-WORD-8BIT-RAM---------------------------
+-----------------------------------------------------------------------
+library IEEE;
+use IEEE.std_logic_1164.all;
 
-ENTITY ram16x8 IS
-    PORT(address :              IN STD_LOGIC_VECTOR(3 DOWNTO0);
-        csbar, oebar, webar :   IN STD_LOGIC;
-        data :                  INOUT STD_LOGIC_VECTOR(7 DOWNTO 0));
-END ram16x8;
+--entity declaration--
+entity ram16x8 is
+    port(   --Inputs--
+            address     : in std_logic_vector(3 downto 0)
+            csbar       : in std_logic;
+            webar       : in std_logic;
+            oebar       : in std_logic;
+            --Outputs--
+            data        : inout std_logic_vector(7 downto 0));
+end entity ram16x8;
 
-ARCHITECTURE version1 OF ram16x8 IS
-    BEGIN
-        PROCESS(address, csbar, oebar, webar, data)
-                TYPE ram_array IS ARRAY(0 TO 15) OF BIT_VECTOR(7 DONWTO 0);
-                VARIABLE index : INTEGER:=0;
-                VARIABLE ram_store : ram_array;
-        BEGIN 
-                IF csbar = '0' THEN
-        --calculate address as an integer
+--architecture declaration--
+architecture ram16x8_arch of ram16x8 is
+
+    begin
+        --process declaration--
+        process(address, csbar, webar, oebar, data)
+            TYPE ram_type is array (0 to 15) of std_logic_vector(7 downto 0);
+            VARIABLE index : integer := 0;
+            VARIABLE ram_store : ram_type;
+
+        begin
+            if csbar = '0' then
                 index := 0;
-                FOR i IN address'RANGE LOOP
-                            IF address(i) = '1' THEN
-                                            index := index + 2**i;
-                            END IF;
-                END LOOP;
-        IF rising_edge(webar) THEN
-                    --write to ram on rising edge of write pulse
+                --calculate address as an integer--
+                for i in address'RANGE LOOP
+                    if address(i) = '1' then
+                        index := index + 2**i;
+                    end if;
+                end loop;
+                --write to ram on rising edge of write pulse--
+                if rising_edge(webar) then
                     ram_store(index) := To_bitvector(data);
-        ELSIF oebar = '0' THEN
+                elsif oebar = '0' then
                     data <= To_StdlogicVector(ram_store(index));
-        ELSE
+                else
                     data <= "ZZZZZZZZ";
-        END IF;
-    ELSE
-        data <= "ZZZZZZZZ";
-    END IF;
-END PROCESS;
-END version1;
+                end if;
+            else
+                data <= "ZZZZZZZZ";
+            end if;
+        end process;
+    
+end architecture ram16x8_arch;
+        
