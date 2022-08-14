@@ -1,16 +1,22 @@
+---------------------------------------------------------------------------
+---------------MULTIPLEXER-ARITHMETIC-LOGIC-UNIT-IN VHDL-------------------
+---------------------------------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;
 
 --entity declaration--
 entity MUX_2_1 is
-    port(   Ry      : in std_logic_vector(7 downto 0) := (others => '0');
+    port(   --Inputs--
+            Ry      : in std_logic_vector(7 downto 0) := (others => '0');
             IM      : in std_logic_vector(7 downto 0) := (others => '0');
             SEL     : in std_logic := '0';
+            --Outputs--
             To_ALU  : out std_logic_vector(7 downto 0) := (others => '0'));
 end entity MUX_2_1;
 
---architecture body declaration--
-architecture mux_arch_behav of MUX_2_1 is
+--architecture declaration--
+architecture MUX_2_1_arch of MUX_2_1 is
+
     begin
         --process declaration--
         proc_mux : process(Ry, IM, SEL)
@@ -21,4 +27,5 @@ architecture mux_arch_behav of MUX_2_1 is
                     To_ALU <= IM;
                 end if;
         end process proc_mux;
-end architecture mux_arch_behav; --architecture ends here--
+
+end architecture mux_2_1_arch;
