@@ -1,16 +1,26 @@
+---------------------------------------------------------------------------------
+--------------------SEQUENCE-STATEMENT-KERNEL IN VHDL----------------------------
+---------------------------------------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;
 
+--entity declarations--
 entity dff is
-    port(clock, din : in std_logic;
-         dout       : out std_logic);
-end dff;
+    port(   --Inputs--
+            clock   : in std_logic;
+            din     : in std_logic;
+            --Outputs--
+            dout    : out std_logic);
+end entity dff;
 
-architecture synth of dff is
+--architecture declarations--
+architecture dff_arch of dff is
+
     begin
-        process
+        process(clock)
             begin
                 wait until ((clock'EVENT) and (clock = '1'));
                 dout <= din;
         end process;
-end synth;
+
+end architecture dff_arch;
