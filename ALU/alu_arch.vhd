@@ -1,3 +1,6 @@
+-----------------------------------------------------------------------------------------------
+---------------------------------ARITHMETIC-LOGIC-UNIT IN VHDL---------------------------------
+-----------------------------------------------------------------------------------------------
 library IEEE;                   --declare which vhdl library
 use IEEE.std_logic_1164.all;    --and packages to use
 use IEEE.std_logic_unsigned.all;--for +, - operators
