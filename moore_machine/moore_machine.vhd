@@ -1,11 +1,16 @@
+---------------------------------------------------------
+------------------MOORE-MACHINE IN VHDL------------------
+---------------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;
 
+--entity declaration--
 entity MOORE is     --Moore machine
     port(X, CLOCK : in STD_LOGIC;
          Z,       : out STD_LOGIC);
-end;
+end entity MOORE;
 
+--architecture declaration--
 architecture BEHAVIOUR of MOORE is
     type STATE_TYPE is (S0, S1, S2, S3);
     signal CURRENT_STATE, NEXT_STATE : STATE_TYPE;

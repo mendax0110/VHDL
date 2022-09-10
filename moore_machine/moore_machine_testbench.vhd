@@ -1,62 +1,76 @@
+---------------------------------------------------------------------
+-------------------MOORE-MACHINE-TESTBENCH IN VHDL-------------------
+---------------------------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity TB_MOORE is
-    end;
+--entity declaration--
+entity Moore_Machine_Testbench is
+end Moore_Machine_Testbench;
 
-    architecture TESTBENCH of TB_MOORE is
+--architecture declaration--
+architecture TESTBENCH of Moore_Machine_Testbench is
 
-        signal CLK  : std_logic;
-        signal X    : std_logic;
-        signal Z    : std_logic;
+    --signal declaration--
+    signal CLK : std_logic;
+    signal X   : std_logic;
+    signal z   : std_logic;
 
-        component MOORE
-            Port(X, CLOCK   : in STD_LOGIC;
-                 Z,         : out STD_LOGIC);
-        end component;
+    --component declaration--
+    component MORRE
+        port(   --Inputs--
+                CLK : in std_logic;
+                X   : in std_logic;
+                --Outputs--
+                z   : out std_logic
+            );
+    end component;
 
-    procedure check(signal Z : in std_logic;
-           constant Expected : in std_logic;
-           constant timepoint : in time)is
-            begin
-                assert(Z/= Expected OR timepoint/= now)
-                report"Value on Z is OK"
-                severity NOTE;
-            end;
-        
-        begin
-            UUT : MOORE
-              Port Map(X, CLK, Z);
+    procedure check(signal Z    : in std_logic;
+            constant Expected   : in std_logic;
+            constant timepoint  : in time) is 
 
-        --CLOCK STIMULI OF 100 NS TIME PERIOD
-        
-            CLOCK : process
-            begin
-                CLK <= '0', '1' after 50 ns;
-                wait for 100 ns;
-            end process;
+                begin
+                    assert(Z/=Expected OR timepoint /= now)
+                    report "Value on Z is OK"
+                    severity NOTE;
+                end;
 
-        -- X input STIMULI
+                begin
+                    UUT : MOORE
+                        port map(X, CLK, Z);
+
+                --Clock stimuli of 100 ns time period--
+
+                    CLOCK : process
+                    begin
+                        CLK <= '0', '1' after 50 ns;
+                        wait for 100 ns;
+                    end process;
+
+                --X input stimuli--
+                    
+                    X_Stimuli : process
+                    begin
+                        X <= '1', '0' after 1000 ns;
+                        wait for 2000 ns;
+                    end process;
+
+                --assert process--
                 
-            X_Stimuli : process
-            begin
-                X <= '1', '0' after 1000 ns;
-                wait for 2000 ns;
-            end process;
+                    check(z, '1', 50 ns);
+                    check(z, '0', 150 ns);
+                    check(z, '1', 250 ns);
+                    check(z, '0', 450 ns);
 
-        -- Assert Process
-            
-            check(Z,'1', 50ns);
-            check(Z,'0', 150ns);
-            check(Z,'1', 250ns);
-            check(Z,'0', 450ns);
+end architecture TESTBENCH;
 
-    end TESTBENCH;
-
-    configuration CFG_TB_MOORE of TB_MOORE is
-        for TESTBENCH
-            for UUT : MOORE
-            end for;
+--configuration declaration--
+configuration CFG_TB_MOORE of TB_MOORE is
+    for TESTBENCH
+        for UUT : MOORE
+            use entity work.MOORE;
         end for;
-    end;
-    
+    end for;
+end configuration;
+
