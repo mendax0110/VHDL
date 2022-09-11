@@ -73,4 +73,3 @@ configuration CFG_TB_MOORE of TB_MOORE is
         end for;
     end for;
 end configuration;
-
