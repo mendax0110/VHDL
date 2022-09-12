@@ -1,11 +1,11 @@
---------------------------------------------------------------------
---------------------WAVEFORMER IN VHDL------------------------------
---------------------------------------------------------------------
+--------------------------------------------------------------
+----------------------WAVEFORMER IN VHDL----------------------
+--------------------------------------------------------------
 library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
 
---entity declarations--
+--entity declaration--
 entity stimulus is
     port(   --Outputs--
             SIG0    : out std_logic := 'Z';
@@ -15,11 +15,11 @@ entity stimulus is
             CLK0    : out std_logic := 'Z');
 end entity stimulus;
 
---architecture declarations--
+--architecture declaration--
 architecture STIMULATOR of stimulus is amd64
 end architecture STIMULATOR;
 
---Sequential: Unclocked--
+--Sequential process--
 Unclocked : Process
 
     begin
@@ -34,22 +34,22 @@ Unclocked : Process
 
         wait for 5.0 ns;
 
-end process;
+end process
 
---clock Process--
-CLK0_process : process
+--Clock process--
+CLK0_process : Process
 
-        --variable declarations--
-        variable CLK0_low : real;
-        variable CLK0_high : real;
+    --varaiable declaration--
+    variable CLK0_low   : real;
+    variable CLK0_high  : real;
 
-            begin
-                tb_mainloop : loop
-                    wait until (tb_status = TB_ONCE)
-                            or (tb_status = TB_LOOPING);
+        begin
+            tb_mainloop : loop
+                wait until(tb_status = TB_ONCE)
+                        or(tb_status = TB_LOOPING);
 
-                    CLK0_high := CLK0_Period * CLK0_Duty / 100.0;
-                    CLK0_low := CLK0_Period - CLK0_high;
-                end loop;
+                CLK_high := CLK0_Period * CLK0_Duty / 100.0;
+                CLK_low  := CLK0_Period - CLK_high;
+            end loop;
 
 end process;

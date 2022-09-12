@@ -14,7 +14,7 @@ entity TxRx_handshake is
             done_i  : in std_logic; --Op done signal from the destination--
             --Outputs--
             ctrl_o  : out std_logic := LO;  --Control signal to the destination--
-            done_o  : out std_logic := LO)); --Op done signal to the source--
+            done_o  : out std_logic := LO); --Op done signal to the source--
 end entity TxRx_handshake;
 
 --architecture definitions--
