@@ -1,6 +1,6 @@
-------------------------------------------------
---------------------UART CLOCK------------------
-------------------------------------------------
+--------------------------------------------------
+--------------------UART CLOCK--------------------
+--------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;
@@ -15,18 +15,22 @@ entity uart_clk is
             uart_clk    : out std_logic);
 end entity uart_clk;
 
+--architecture declaration--
 architecture uart_clk_arch of uart_clk is
 
+    --constants--
     constant NUMERATOR      : std_logic_vector(14 downto 0) := "000010010000000"; --1152;
     constant DENOMINATOR    : std_logic_vector(14 downto 0) := "011110100001001"; --15625;
 
+    --signals--
     signal clk_out : std_logic;                     := '0';
     signal counter : std_logic_vector(14 downto 0)  := (others => '0');
 
     begin
 
         uart_clk <= clk_out;
-
+        
+        --reset counter--
         process(clk, reset)
         begin
             if (reset = '1') then
