@@ -1,27 +1,27 @@
-----------------------------------------------------------------------------------------------
-------------------SIMPLE HALF ADDER IN VHDL---------------------------------------------------
-----------------------------------------------------------------------------------------------
+----------------------------------------------------------
+--------------------HALF-ADDER IN VHDL--------------------
+----------------------------------------------------------
 library IEEE;
-use IEEE.std_logic_1164.all;
-use IEEE.std_logic_arith.all;
-use IEEE.std_logic_unsigned.all;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
---entity declarations--
+--entity declaration--
 entity half_adder is
     port(   --Inputs--
-            a   : in std_logic;
-            b   : in std_logic;
+            a    : in  std_logic;
+            b    : in  std_logic;
             --Outputs--
-            s1  : out std_logic;
-            c1  : out std_logic);
+            s1   : out std_logic;
+            c1   : out std_logic);
 end entity half_adder;
 
---architecture definitions--
+--architecture declaration--
 architecture half_adder_arch of half_adder is
 
     begin
+        --the logical operator "AND" and "XOR" is defined in VHDL--
+        s1 <= (a XOR b);
+        c1 <= (a AND b);
 
-        s1  <= (a XOR b);
-        c1  <= (a AND b);   --the logical operator "AND" and "XOR" is defined in VDHL--
-    
 end architecture half_adder_arch;
