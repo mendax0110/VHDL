@@ -21,7 +21,8 @@ end entity MAC;
 architecture MAC_arch of MAC is
     
     component N_dff
-        generic(N: integer := 8); --default value for N is 8--
+        --default value for N is 8--
+        generic(N: integer := 8); 
         port(   --Input--
                 clk     : in std_logic;
                 enable  : in std_logic;
