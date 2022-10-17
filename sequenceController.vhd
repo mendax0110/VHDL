@@ -28,6 +28,7 @@ architecture SequenceConroller_arch of SequenceController is
     signal  StateEnable : std_logic;
 
     begin
+        --process declaration--
         DisplaySpeed : process(ClockState)
         begin
             if rising_edge(ClockState) then
@@ -43,6 +44,7 @@ architecture SequenceConroller_arch of SequenceController is
             end if;
         end process DisplaySpeed;
 
+        --process declaration--
         count : process(ClockState, StateEnable, Enabler, Reverse, Reset)
         begin
             if Reset = '1' then
