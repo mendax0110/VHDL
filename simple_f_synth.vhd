@@ -17,6 +17,7 @@ end entity simple_f_synth;
 --architecture declaration--
 architecture simple_f_synth_arch of simple_f_synth is
 
+    --component declaration--
     component simple_f_synth_carry_adder is
         generate(N : integer);
         port(   A, D   : in std_logic_vector(N - 1 downto 0);
@@ -25,6 +26,7 @@ architecture simple_f_synth_arch of simple_f_synth is
                 Cout   : out std_logic);
     end component;
 
+    --component declaration--
     component reg is
         generic(N : integer);
         port(   clock   : in std_logic;
@@ -34,9 +36,11 @@ architecture simple_f_synth_arch of simple_f_synth is
                 q       : out std_logic_vector(N - 1 downto 0));
     end component;
 
+    --constant declaration--
     constant HIGH   : std_logic := '1';
     constant LOW    : std_logic := '0';
 
+    --signal declaration--
     signal addr_output, reg_output : std_logic_vector(N - 1 downto 0);
     signal Cout                    : std_logic;
 
