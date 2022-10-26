@@ -6,7 +6,7 @@ use IEEE.std_logic_1164.all;
 
 --entity declarations for rom--
 entity rom is
-    port8(      --Inputs--
+    port(      --Inputs--
                 address         : in std_logic_vector(6 downto 0);
                 CS              : in std_logic; --clear the memory--
                 EN              : in std_logic; --enable memory--
@@ -25,28 +25,36 @@ architecture rom_arch of rom is
 
     component sin_entity
         port(
+            --Inputs--
             address : in std_logic_vector(6 downto 0);
+            --Outputs--
             data    : out real;
         );
     end component sin_entity;
     
     component square_entity
         port(
+            --Inputs--
             address : in std_logic_vector(6 downto 0);
+            --Outputs--
             data    : out real;
         );
     end component square_entity;
 
     component triangle_entity
         port(
+            --Inputs--
             address : in std_logic_vector(6 downto 0);
+            --Outputs--
             data    : out real;
         );
     end component triangle_entity;
     
     component cos
         port(
+            --Inputs--
             address : in std_logic_vector(6 downto 0);
+            --Outputs--
             data    : out real;
         );
     end component cos;
