@@ -26,6 +26,7 @@ architecture rom_arch of rom is
     );
 
     begin
+        --process definitions--
         process(clk)
         begin
             if(rising_edge(clk)) then
