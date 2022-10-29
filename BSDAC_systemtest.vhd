@@ -38,6 +38,7 @@ architecture BSDAC_systemtest_arch of BSDAC_systemtest is
                 bit_out => bit_out
             );
 
+        --counter--
         clocked: process(clk)
         begin
             if rising_edge(clk) then
