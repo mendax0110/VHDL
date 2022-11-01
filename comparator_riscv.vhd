@@ -19,10 +19,10 @@ end entity riscv_comparator;
 architecture riscv_comparator_arch of riscv_comparator is
 
     begin
-
+        --Compare the two inputs--
         compare: process(funct3, rs1, rs2)
         begin
-
+            --check if the funct3 is equal to 000--
             case funct3 is
                 when b"000" => --EQ
                         result  <= to_std_logic(rs1 = rs2);
