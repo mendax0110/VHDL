@@ -25,6 +25,7 @@ architecture segment_arch of segment is
     signal segmentSignal : std_logic_vector(7 downto 0);
 
     begin
+        --process definitions--
         syn_seg: process(clk, reset)
         begin
             if(clkEnable = '1') then
@@ -38,6 +39,7 @@ architecture segment_arch of segment is
             end if;
         end process;
 
+        --combinational segment logic--
         comb_seg: process(input)
         begin
             case (input) is
