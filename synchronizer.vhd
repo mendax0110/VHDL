@@ -33,7 +33,7 @@ architecture synchronizer_arch of synchronizer is
     attribute ASYNC_REG of sync_chain : signal is "TRUE";
 
     begin
-
+        --clock and reset logic--
         main : process(clk, rst)
         begin
             if rst = '1' then

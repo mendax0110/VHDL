@@ -23,6 +23,7 @@ architecture subbyte_arch of subbyte is
     signal sub_bytes_buf : std_logic_vector(127 downto 0) := (others => '0');
 
     begin
+        --process definitions--
         sbox_byte_substitution : process(sys_clk)
         begin
             if(sys_clk'event and sys_clk = '1') then
@@ -34,6 +35,7 @@ architecture subbyte_arch of subbyte is
             end if;
         end process;
 
+        --sub array byte substitution--
         SUB_ARRAY : for i in 0 to 15 generate
         begin
             sub_bytes_buf((((i+1)*8)-1) downto(i*8)) <= sbox(conv_integer(subbytes_in((((i+1)*8)-1) downto(i*8))));
