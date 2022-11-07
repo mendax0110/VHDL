@@ -8,7 +8,6 @@ use IEEE.numeric_std.all;
 --entity declarations--
 entity timer is
     generic(CYCLES_BITS: positive := 8);
-
     port(   --Inputs--
             clk         : in std_logic;
             clr         : in std_logic;
@@ -26,6 +25,7 @@ architecture timer_arch of timer is
     signal counter, next_counter: unsigned (CYCLES_BITS downto 0);
 
     begin
+        --processes--
         sync:process(clk) is
             begin
                 if(clr = '1') then
@@ -37,6 +37,7 @@ architecture timer_arch of timer is
                 end if;
         end process sync;
 
+        --processes--
         comb: process(state, counter, start) is
             begin
                 finished <= '0';
