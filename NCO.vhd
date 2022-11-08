@@ -22,11 +22,13 @@ end entity NCO;
 --architecure definitions--
 architecture NCO_arch of NCO is
 
+    --signal declarations--
     constant increment  : integer := (freq*2) - clk_freq;
     signal accumulator  : integer := range increment to (freq*2) := 0;
     signal phase_change : std_logic := '0';
 
     begin
+        --processes--
         process(clk_in, reset)
         begin
             if(reset = '0') then
