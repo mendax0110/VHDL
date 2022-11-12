@@ -8,11 +8,12 @@ use IEEE.std_logic_arith.all;
 
 --entity declaration--
 entity program_counter is
-    port(
+    port(   --Inputs--
             clk      : in std_logic;
             PC_in    : in std_logic_vector(7 downto 0);
             rst_bar  : in std_logic; --active low reset signal
             PC_ctrl  : in std_logic;
+            --Outputs--
             PC_out   : out std_logic_vector(7 downto 0);
             clk_out  : out std_logic);
 end program_counter;
