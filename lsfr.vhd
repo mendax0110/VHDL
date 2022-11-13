@@ -24,6 +24,7 @@ architecture lsfr_arch of lsfr is
         q           <= internal_state;
         lsfr_input  <= internal_state(7) xor internal_state(5) xor internal_state(4) xor internal_state(3);
 
+        --process definitions--
         process(clk)
         begin
             if(rising_edge(clk)) then
