@@ -20,7 +20,8 @@ architecture neg_edge_arch of neg_edge is
     --signal definitions--
     signal sclk_delayed : std_logic;
     begin
-
+        
+        --process definitions--
         process(clk)
         begin
             if rising_edge(clk) then
