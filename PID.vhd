@@ -45,7 +45,8 @@ architecture PID_arch of PID is
                 if CLK1'Event and CLK1 = '1' then
                     state <= next_state;
                 end if;
-
+                
+                --case statement to determine the next state--
                 case state is
                     when Reset =>
                         sAdc <= to_integer(unsigned(ADC_DATA)); --Get the input for PID--
