@@ -62,6 +62,7 @@ architecture top_arch of top is
 
     begin
 
+        --map FSM component--
         c0  :   FSM port map(item_select, request, one_tl, take_item, reset, clk, ready_led, current_state_out, show_TL);
         c1  :   seven_four port map(show_TL, "0000", current_state_out, "0101", clk, w4, seg_sel_4, w5);
         

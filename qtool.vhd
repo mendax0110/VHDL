@@ -15,6 +15,7 @@ end package q_tool;
 --architecure definitions--
 architecture q_tool_arch of q_tool is
 
+    --f_log2 calculates the width(amount of bits) needed to store x--    
     function f_log2(x: positive) return natural is
         variable i: natural := 0;
         begin
