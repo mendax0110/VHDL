@@ -23,11 +23,13 @@ end architecture STIMULATOR;
 Unclocked : Process
 
     begin
+        -- 1. Assign values to the signals--
         SIG0_driver <= '0';
         SIG1_driver <= x"3";
         SIG2_driver <= 1;
         SIG3_driver <= MyColor.Yellow;
-
+        
+        -- 2. Wait for 1 clock cycle--
         wait for 45.0 ns;
 
         SIG1_driver <= x"F";
