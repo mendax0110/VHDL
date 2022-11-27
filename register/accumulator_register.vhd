@@ -16,6 +16,7 @@ end entity accumulator_register;
 architecture accumulator_register_arch of accumulator_register is
     
     begin
+        --process clk rising edge--
         process(clk)
         begin
             if rising_edge(clk) then

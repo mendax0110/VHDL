@@ -18,6 +18,8 @@ end entity pulse_shreg;
 
 --architecture definition--
 architecture pulse_shreg_arch of pulse_shreg is
+
+    --signal declaration--
     subtype     T_SHIFTING  is std_logic_vector(G_period -1 downto 0);
     constant    C_ZERO      : T_SHIFTING := (0 => '1', others => '0');
     signal      SHIFTING    : T_SHIFTING;
@@ -26,6 +28,7 @@ architecture pulse_shreg_arch of pulse_shreg is
         <= '1' when SHIFTING = C_ZERO else '0';
         PULSE
 
+        --process definition--
         shreg_proc : process(CLK) is
             begin
                 if rising_edge(CLK) then

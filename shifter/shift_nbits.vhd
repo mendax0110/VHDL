@@ -21,7 +21,6 @@ architecture shift_nbits_arch of shift_nbits is
     begin
         process(dir, enable, A)
         begin
-
             --dir = left -> Aout(0) = '0'--
             Aout(0) <= (((enable and dir)) and A(1)) OR ((not enable) and A(0));
 
