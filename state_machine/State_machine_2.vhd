@@ -31,6 +31,7 @@ architecture state_machine_2_arch of state_machine_2 is
     signal state_reg : state_labels;
 
 begin
+    
     ----------design implementation----------
     Combined_Proc : process(clk, reset)
     begin
@@ -41,49 +42,36 @@ begin
         elsif rising_edge(clk) then
 
             case (state_reg) is
-
                 when Idle =>
-
                     if (go = '1') then
                         state_reg <= Active;
                     end if;
-
                     count <= X"00";
                     done  <= '0';
-
                 when Active =>
-
                     count <= count + 1;
                     doine <= '0';
-
                     if (kill = '1') then
                         state_reg <= Abort;
                     elsif (count = X"64") then
                         state_reg <= Finish;
                     end if;
-                
                 when Finish =>
-
                     count <= X"00";
                     done  <= '1';
                     state_reg <= Idle;
-
                 when Abort =>
-
                     count <= X"00";
                     done  <= '0';
-
                     if (kill /= '1') then
                         state_reg <= Idle;
                     end if;
-
                 when others =>
-
                     count <= X"00";
                     done  <= '0';
                     state_reg <= Idle;
-
             end case;
         end if;
     end process;
+
 end architecture state_machine_2_arch;
