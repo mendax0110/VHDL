@@ -24,10 +24,12 @@ end entity Parity_Generator;
 architecture Parity_Generator_arch of Parity_Generator is
 
     begin
+        --process declarations--
         P1 : process
         variable off : bit;
 
         begin
+            --clocked process--
             wait until clk'event and clk = '1';
                 odd := '0';
 
