@@ -1,11 +1,13 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
+--entity declaration--
 entity mealy is     --mealy machine
     port(X, CLOCK : in std_logic;
          Z        : out std_logic);
 end;
 
+--architecture declaration--
 architecture BEHAVIOUR of mealy is
     type STATE_TYPE is (S0, S1, S2, S3);
     signal CURRENT_STATE, NEXT_STATE : STATE_TYPE;
@@ -65,7 +67,7 @@ architecture BEHAVIOUR of mealy is
             end case;
         end process;
 
-    -- Process to hold synchronous elements (flip-flops)
+    -- Process to hold synchronous elements (flip-flops)--
     SYNCH : process
         begin
         wait until CLOCK'event and CLOCK = '1';
