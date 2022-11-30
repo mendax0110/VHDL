@@ -22,6 +22,7 @@ end entity clock_generator;
 architecture bypass of clock_generator is
 
     begin
+        --Clock Bypass--
         assert CLK_INPUT_HZ <= CLK_OUTPUT_HZ severity FAILURE;
 
         pll_locked_out  <= pll_rst_in;

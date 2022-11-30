@@ -26,6 +26,7 @@ architecture clockdivider_arch of clockdivider is
             variable state      : std_logic := '0';
             
                 begin
+                    --clock divider--
                     if rising_edge(clk_in) then
                         divider := std_logic_vector(unsigned(divider) + 1);
 
