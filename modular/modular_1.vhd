@@ -1,3 +1,6 @@
+----------------------------------------------------------------------------------------
+---------------------------------MODULAR-1-IN VHDL CODE---------------------------------
+----------------------------------------------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
@@ -78,7 +81,6 @@ architecture modular_1_arch of modular_1 is
             if (reset = '1') then
                 kill_ltchd <= '0';
             elsif rising_edge(clk) then
-
                 if(     kill_1 = '1'
                     or  kill_2 = '1'
                     or  kill_3 = '1'
@@ -89,6 +91,7 @@ architecture modular_1_arch of modular_1 is
                 end if;
             end if;
         end process;
+
 end architecture modular_1_arch;
 
                 
