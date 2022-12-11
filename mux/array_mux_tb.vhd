@@ -23,6 +23,7 @@ architecture array_mux_tb_arch of array_mux_tb is
     begin
         dut: entity work.array_multiplexer port map(x, y, result);
 
+        --process declaration--	
         main: process
         begin
             test_runner_setup(runner, runner_cfg);
